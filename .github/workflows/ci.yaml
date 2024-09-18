@@ -23,6 +23,12 @@ jobs:
           cd ./workshop-service
           go build
           
+      
+      - name: Try to push
+        if: '!cancelled()'
+        run: |
+          echo "Trying to push!"
+
       # - name: Build
       #   run: |
       #     ls
