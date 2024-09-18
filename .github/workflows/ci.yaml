@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: [ '1.19', '1.20', '1.21.x' ]
+        go-version: ['1.21.x']
 
     steps:
       - uses: actions/checkout@v4
@@ -19,10 +19,13 @@ jobs:
           go-version: '1.21.x'
      
       - name: Install dependencies
-        run: go get ./workshop-service/ 
+        run: go install
      
       - name: Build
-        run: go build ./workshop-service/
+        run: |
+          ls
+          go build 
+          |
 
       - name: Test with the Go CLI
         run: go test -json > TestResults-${{ matrix.go-version }}.json
