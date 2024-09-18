@@ -19,14 +19,15 @@ jobs:
           go-version: '1.21.x'
      
       - name: Install dependencies
-        run: go install
-     
+        run: | 
+          cd ./workshop-service
+          go install
+          
       - name: Build
         run: |
           ls
           go build 
-          |
-
+          
       - name: Test with the Go CLI
         run: go test -json > TestResults-${{ matrix.go-version }}.json
 
